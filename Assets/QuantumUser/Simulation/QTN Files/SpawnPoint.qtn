@@ -1,0 +1,15 @@
+component SpawnPoint
+{
+
+
+}
+
+
+singleton component SpawnPointManager
+{
+    [AllocateOnComponentAdded]
+    list<EntityRef> AvaliableSpawnPoints;
+
+    [AllocateOnComponentAdded]
+    list<EntityRef> UsedSpawnPoints;
+}
