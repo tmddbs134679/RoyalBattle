@@ -812,23 +812,23 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Android: 
-    EmbeddedLinux: 
-    GameCoreScarlett: 
-    GameCoreXboxOne: 
-    LinuxHeadlessSimulation: 
-    Nintendo Switch: 
-    PS4: 
-    PS5: 
-    QNX: 
-    Stadia: 
-    Standalone: 
-    VisionOS: 
-    WebGL: 
-    Windows Store Apps: 
-    XboxOne: 
-    iPhone: 
-    tvOS: 
+    Android: QUANTUM_LOGLEVEL_INFO
+    EmbeddedLinux: QUANTUM_LOGLEVEL_INFO
+    GameCoreScarlett: QUANTUM_LOGLEVEL_INFO
+    GameCoreXboxOne: QUANTUM_LOGLEVEL_INFO
+    LinuxHeadlessSimulation: QUANTUM_LOGLEVEL_INFO
+    Nintendo Switch: QUANTUM_LOGLEVEL_INFO
+    PS4: QUANTUM_LOGLEVEL_INFO
+    PS5: QUANTUM_LOGLEVEL_INFO
+    QNX: QUANTUM_LOGLEVEL_INFO
+    Stadia: QUANTUM_LOGLEVEL_INFO
+    Standalone: QUANTUM_LOGLEVEL_INFO
+    VisionOS: QUANTUM_LOGLEVEL_INFO
+    WebGL: QUANTUM_LOGLEVEL_INFO
+    Windows Store Apps: QUANTUM_LOGLEVEL_INFO
+    XboxOne: QUANTUM_LOGLEVEL_INFO
+    iPhone: QUANTUM_LOGLEVEL_INFO
+    tvOS: QUANTUM_LOGLEVEL_INFO
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
@@ -843,6 +843,7 @@ PlayerSettings:
     PS5: 1
     QNX: 1
     Stadia: 1
+    Standalone: 4
     VisionOS: 1
     WebGL: 1
     Windows Store Apps: 1
@@ -851,7 +852,7 @@ PlayerSettings:
     tvOS: 1
   incrementalIl2cppBuild: {}
   suppressCommonWarnings: 1
-  allowUnsafeCode: 0
+  allowUnsafeCode: 1
   useDeterministicCompilation: 1
   additionalIl2CppArgs: 
   scriptingRuntimeVersion: 1
