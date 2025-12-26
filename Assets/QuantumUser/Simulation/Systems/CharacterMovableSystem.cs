@@ -10,20 +10,23 @@ namespace Quantum
             
             var input = frame.GetPlayerInput(filter.PlayerLink->Player);
 
-            var dir = input->Dir.XOY;
+            var dir = input->Dir;
 
             if(dir.Magnitude > 1)
             {
                 dir = dir.Normalized;
             }
+       
+            var kccSettings = frame.FindAsset(filter.KCC->Settings);
+            kccSettings.Move(frame, filter.Entity, dir);
 
-            filter.CharacterController3D->Move(frame, filter.Entity, dir);
+
         }
 
         public struct Filter
         {
             public EntityRef Entity;
-            public CharacterController3D* CharacterController3D;
+            public KCC* KCC;
             public PlayerLink* PlayerLink;
         }
 
@@ -37,7 +40,12 @@ namespace Quantum
             {
                 Player = player
             };
-            f.Add(playerEntity, playerLink);    
+            f.Add(playerEntity, playerLink);
+            var kcc = f.Unsafe.GetPointer<KCC>(playerEntity);
+            var kccSettings = f.FindAsset(kcc->Settings);
+
+            kcc->Acceleration = kccSettings.Acceleration;
+            kcc->MaxSpeed = kccSettings.BaseSpeed;
 
         }
 

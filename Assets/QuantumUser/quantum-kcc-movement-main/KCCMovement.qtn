@@ -1,0 +1,6 @@
+component KCCMovement
+{
+    asset_ref<KCCMovementSettings> Settings;
+    FPVector2 Velocity;
+    FP CurrentSpeed;
+}

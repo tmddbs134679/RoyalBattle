@@ -609,6 +609,62 @@ namespace Quantum {
     }
   }
   [StructLayout(LayoutKind.Explicit)]
+  public unsafe partial struct KCC : Quantum.IComponent {
+    public const Int32 SIZE = 40;
+    public const Int32 ALIGNMENT = 8;
+    [FieldOffset(0)]
+    public AssetRef<KCCSettings> Settings;
+    [FieldOffset(16)]
+    public FP MaxSpeed;
+    [FieldOffset(8)]
+    public FP Acceleration;
+    [FieldOffset(24)]
+    public FPVector2 Velocity;
+    public override readonly Int32 GetHashCode() {
+      unchecked { 
+        var hash = 659;
+        hash = hash * 31 + Settings.GetHashCode();
+        hash = hash * 31 + MaxSpeed.GetHashCode();
+        hash = hash * 31 + Acceleration.GetHashCode();
+        hash = hash * 31 + Velocity.GetHashCode();
+        return hash;
+      }
+    }
+    public static void Serialize(void* ptr, FrameSerializer serializer) {
+        var p = (KCC*)ptr;
+        AssetRef.Serialize(&p->Settings, serializer);
+        FP.Serialize(&p->Acceleration, serializer);
+        FP.Serialize(&p->MaxSpeed, serializer);
+        FPVector2.Serialize(&p->Velocity, serializer);
+    }
+  }
+  [StructLayout(LayoutKind.Explicit)]
+  public unsafe partial struct KCCMovement : Quantum.IComponent {
+    public const Int32 SIZE = 32;
+    public const Int32 ALIGNMENT = 8;
+    [FieldOffset(0)]
+    public AssetRef<KCCMovementSettings> Settings;
+    [FieldOffset(16)]
+    public FPVector2 Velocity;
+    [FieldOffset(8)]
+    public FP CurrentSpeed;
+    public override readonly Int32 GetHashCode() {
+      unchecked { 
+        var hash = 9907;
+        hash = hash * 31 + Settings.GetHashCode();
+        hash = hash * 31 + Velocity.GetHashCode();
+        hash = hash * 31 + CurrentSpeed.GetHashCode();
+        return hash;
+      }
+    }
+    public static void Serialize(void* ptr, FrameSerializer serializer) {
+        var p = (KCCMovement*)ptr;
+        AssetRef.Serialize(&p->Settings, serializer);
+        FP.Serialize(&p->CurrentSpeed, serializer);
+        FPVector2.Serialize(&p->Velocity, serializer);
+    }
+  }
+  [StructLayout(LayoutKind.Explicit)]
   public unsafe partial struct PlayerLink : Quantum.IComponent {
     public const Int32 SIZE = 4;
     public const Int32 ALIGNMENT = 4;
@@ -646,6 +702,10 @@ namespace Quantum {
       BuildSignalsArrayOnComponentRemoved<CharacterController2D>();
       BuildSignalsArrayOnComponentAdded<CharacterController3D>();
       BuildSignalsArrayOnComponentRemoved<CharacterController3D>();
+      BuildSignalsArrayOnComponentAdded<Quantum.KCC>();
+      BuildSignalsArrayOnComponentRemoved<Quantum.KCC>();
+      BuildSignalsArrayOnComponentAdded<Quantum.KCCMovement>();
+      BuildSignalsArrayOnComponentRemoved<Quantum.KCCMovement>();
       BuildSignalsArrayOnComponentAdded<MapEntityLink>();
       BuildSignalsArrayOnComponentRemoved<MapEntityLink>();
       BuildSignalsArrayOnComponentAdded<NavMeshAvoidanceAgent>();
@@ -752,6 +812,8 @@ namespace Quantum {
       typeRegistry.Register(typeof(IntVector3), IntVector3.SIZE);
       typeRegistry.Register(typeof(Joint), Joint.SIZE);
       typeRegistry.Register(typeof(Joint3D), Joint3D.SIZE);
+      typeRegistry.Register(typeof(Quantum.KCC), Quantum.KCC.SIZE);
+      typeRegistry.Register(typeof(Quantum.KCCMovement), Quantum.KCCMovement.SIZE);
       typeRegistry.Register(typeof(LayerMask), LayerMask.SIZE);
       typeRegistry.Register(typeof(MapEntityId), MapEntityId.SIZE);
       typeRegistry.Register(typeof(MapEntityLink), MapEntityLink.SIZE);
@@ -793,8 +855,10 @@ namespace Quantum {
       typeRegistry.Register(typeof(Quantum._globals_), Quantum._globals_.SIZE);
     }
     static partial void InitComponentTypeIdGen() {
-      ComponentTypeId.Reset(ComponentTypeId.BuiltInComponentCount + 1)
+      ComponentTypeId.Reset(ComponentTypeId.BuiltInComponentCount + 3)
         .AddBuiltInComponents()
+        .Add<Quantum.KCC>(Quantum.KCC.Serialize, null, null, ComponentFlags.None)
+        .Add<Quantum.KCCMovement>(Quantum.KCCMovement.Serialize, null, null, ComponentFlags.None)
         .Add<Quantum.PlayerLink>(Quantum.PlayerLink.Serialize, null, null, ComponentFlags.None)
         .Finish();
     }
