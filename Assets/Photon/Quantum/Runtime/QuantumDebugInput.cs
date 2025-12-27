@@ -1,12 +1,16 @@
-namespace Quantum {
+namespace Quantum 
+  
+  {
   using Photon.Deterministic;
   using UnityEngine;
 
   /// <summary>
   /// A Unity script that creates empty input for any Quantum game.
   /// </summary>
-  public class QuantumDebugInput : MonoBehaviour {
+  public class QuantumDebugInput : MonoBehaviour 
+    {
 
+    private Vector3 _mouseHitPos;
     private void OnEnable() {
       QuantumCallback.Subscribe(this, (CallbackPollInput callback) => PollInput(callback));
     }
@@ -25,8 +29,18 @@ namespace Quantum {
 #endif
 
       Quantum.Input i = new Quantum.Input();
+
+      var ray = Camera.main.ScreenPointToRay(UnityEngine.Input.mousePosition);
+
+      if (Physics.Raycast(ray, out var hit, 100, 1 << UnityEngine.LayerMask.NameToLayer("Ground")))
+        _mouseHitPos = hit.point;
+
+      i.MousePos = _mouseHitPos.ToFPVector3().XZ;
       i.Dir = new FPVector2(UnityEngine.Input.GetAxis("Horizontal").ToFP(), UnityEngine.Input.GetAxis("Vertical").ToFP());
       callback.SetInput(i, DeterministicInputFlags.Repeatable);
     }
   }
+
+
+
 }

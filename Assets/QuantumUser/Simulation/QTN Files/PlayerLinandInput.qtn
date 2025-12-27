@@ -6,4 +6,5 @@ component PlayerLink
 input
 {
     FPVector2 Dir;
+    FPVector2 MousePos;
 }
