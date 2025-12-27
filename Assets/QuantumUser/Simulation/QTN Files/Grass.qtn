@@ -1,0 +1,15 @@
+component Grass
+{
+
+}
+
+
+event OnPlayerEnteredGrass
+{
+    PlayerRef Player;
+}
+
+event OnPlayerExitGrass
+{
+    PlayerRef Player;
+}

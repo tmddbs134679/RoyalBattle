@@ -144,6 +144,7 @@ GameObject:
   - component: {fileID: 8027146957127037257}
   - component: {fileID: 2163349296135621812}
   - component: {fileID: 8695893204531864254}
+  - component: {fileID: 548875989933624769}
   m_Layer: 6
   m_Name: Character_Base
   m_TagString: Untagged
@@ -261,7 +262,7 @@ MonoBehaviour:
     LayerSource: 0
     Layer: 6
     CallbackFlags:
-      Value: 0
+      Value: 3456
   PhysicsBody:
     IsEnabled: 1
     Config2D: 1
@@ -468,6 +469,20 @@ MonoBehaviour:
         RawValue: 0
       Y:
         RawValue: 0
+--- !u!114 &548875989933624769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326267824891306075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a419a39aa81271f4eb8fb6050fd43d89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 534198499139429989}
+  overheadUi: {fileID: 1892350581194458970}
 --- !u!1 &1739315570316238824
 GameObject:
   m_ObjectHideFlags: 0
