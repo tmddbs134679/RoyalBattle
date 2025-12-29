@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 2163349296135621812}
   - component: {fileID: 8695893204531864254}
   - component: {fileID: 548875989933624769}
+  - component: {fileID: 217219920507520748}
   m_Layer: 6
   m_Name: Character_Base
   m_TagString: Untagged
@@ -413,7 +414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0008c51fe3af00b4da5d44f02d9b3dff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BindBehaviour: 0
+  BindBehaviour: 1
   ManualDisposal: 0
   ViewFlags: 0
   InterpolationMode: 0
@@ -483,6 +484,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 534198499139429989}
   overheadUi: {fileID: 1892350581194458970}
+--- !u!114 &217219920507520748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326267824891306075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bab801df35375db4d87942bbb3d3933b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prototype:
+    CooldownTime:
+      RawValue: 0
+    WeaponData:
+      Id:
+        Value: 379133234280649316
 --- !u!1 &1739315570316238824
 GameObject:
   m_ObjectHideFlags: 0

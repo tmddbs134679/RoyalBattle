@@ -37,6 +37,7 @@ namespace Quantum
 
       i.MousePos = _mouseHitPos.ToFPVector3().XZ;
       i.Dir = new FPVector2(UnityEngine.Input.GetAxis("Horizontal").ToFP(), UnityEngine.Input.GetAxis("Vertical").ToFP());
+      i.Fire = UnityEngine.Input.GetMouseButton(0); 
       callback.SetInput(i, DeterministicInputFlags.Repeatable);
     }
   }

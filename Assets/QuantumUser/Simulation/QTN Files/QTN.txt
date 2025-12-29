@@ -1,0 +1,25 @@
+
+
+
+QTN이란?
+-> 포톤 퀀텀의 DSL(Domain Specific Language)로 게임 데이터 구조를 정의하는 전용 언어
+
+왜 QTN인가
+- 결정론적 시뮬레이션 보장       // 결정론적 : 동일한 조건에서 프로그램을 실행하면 항상 똑같은 결과가 나오는것 ex) 프레임이 지날수록 오차 누적 A는 50.2 일때 B는 50.18 이런 경우
+- C# 코드를 자동생성
+- 네트워크 동기화를 자동으로 처리
+- 타입 안정성 보장
+
+
+ex)
+component Player 
+{
+    FP Health;
+    FP MaxHealth;
+    FP Speed;
+    FPVector3 Position;
+    Int32 Score;
+    Boolean IsAlive;
+}
+
+

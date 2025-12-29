@@ -116,6 +116,12 @@ MonoBehaviour:
     SystemName: 
     StartDisabled: 0
     Children: []
+  - SystemType:
+      AssemblyQualifiedName: Quantum.WeaponSystem, Quantum.Simulation, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    SystemName: 
+    StartDisabled: 0
+    Children: []
 --- !u!114 &-4809999769748414402
 MonoBehaviour:
   m_ObjectHideFlags: 0
