@@ -75,6 +75,8 @@ public unsafe class PlayerView : QuantumEntityViewComponent
     }
     private void UpdateAnimator()
     {
+        if(PredictedFrame.Exists(EntityRef) == false) return;
+
         var input = PredictedFrame.GetPlayerInput(PredictedFrame.Get<PlayerLink>(EntityRef).Player);
         var kcc = PredictedFrame.Get<KCC>(EntityRef);
         var velocity = kcc.Velocity;

@@ -16,7 +16,7 @@ namespace Quantum
             {
                 if(frame.Unsafe.TryGetPointer<Damageable>(entityHit, out var damageable))
                 {
-                    frame.Signals.DamageableHit(entityHit, filter.Bullet->Damage, damageable);
+                    frame.Signals.DamageableHit(entityHit, filter.Bullet->Owner, filter.Bullet->Damage,damageable);
                 }
                 frame.Destroy(filter.Entity);
                 return;
