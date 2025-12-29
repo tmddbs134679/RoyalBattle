@@ -20,9 +20,9 @@ MonoBehaviour:
     RawValue: 131072
   offset:
     X:
-      RawValue: 0
+      RawValue: 2425
     Y:
-      RawValue: 131072
+      RawValue: 91750
     Z:
-      RawValue: 0
+      RawValue: 106365
   bulletData: {fileID: 11400000, guid: e9cccd528986e0044a25bf51f75554a4, type: 2}

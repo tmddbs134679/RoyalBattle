@@ -1,5 +1,10 @@
 
-시스템 필터 (System Filter) 
+ 
+ 
+== System Filter와 SystemSignalsOnly ==
+
+
+시스템 필터 (System Filter)
 - 이 시스템이 처리할 엔티티의 조건을 정의하는 것.
 
 기본개념
@@ -45,3 +50,11 @@ public unsafe class CharacterMovableSystem : SystemMainThreadFilter<CharacterMov
 - 엔티티 4: [KCC X, PlayerLink X] → 건너뜀
 
 결과: 엔티티 1만 Update()에 전달됨
+
+
+
+SystemSignalsOnly
+- 시그널만 처리하는 시스템(이벤트 발생 시만, 시그널 발생 시만) [Update 메서드 없음]
+
+ex) 점수, 사운드, 이펙트 등
+

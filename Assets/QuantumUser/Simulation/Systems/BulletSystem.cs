@@ -14,6 +14,10 @@ namespace Quantum
 
             if(CheckForCollisions(frame,filter,nextPosition, out var entityHit))
             {
+                if(frame.Unsafe.TryGetPointer<Damageable>(entityHit, out var damageable))
+                {
+                    frame.Signals.DamageableHit(entityHit, filter.Bullet->Damage, damageable);
+                }
                 frame.Destroy(filter.Entity);
                 return;
             }
