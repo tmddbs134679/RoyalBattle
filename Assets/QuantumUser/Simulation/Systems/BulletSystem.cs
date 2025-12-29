@@ -9,12 +9,14 @@ namespace Quantum
        
         public override void Update(Frame frame, ref Filter filter)
         {
+            filter.Transform->Position += filter.Bullet->Direction * filter.Bullet->Speed * frame.DeltaTime;
         }
 
         public struct Filter
         {
             public EntityRef Entity;
             public Bullet* Bullet;
+            public Transform2D* Transform;
         }
 
 
@@ -31,6 +33,7 @@ namespace Quantum
             bullet->Speed = bulletData.Speed;
             bullet->Damage = bulletData.Damage;
             bullet->Owner = owner;
+            bullet->HeightOffset = weaponData.offset.Y;
             bullet->Time = bulletData.Duration;
             bullet->Direction = ownersTransform.Up;
 

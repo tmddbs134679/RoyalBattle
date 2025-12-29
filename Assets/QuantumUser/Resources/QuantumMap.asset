@@ -283,8 +283,6 @@ MonoBehaviour:
     - rid: 1227370179952902145
     - rid: 1227370179952902146
     - rid: 1227370179952902147
-  - Components:
-    - rid: 4096407442475188224
   SerializedTriangleDataUncompressedSize: 452
   references:
     version: 2
@@ -448,16 +446,6 @@ MonoBehaviour:
       type: {class: SpawnPointPrototype, ns: Quantum.Prototypes, asm: Quantum.Simulation}
       data:
         _empty_prototype_dummy_field_: 0
-    - rid: 4096407442475188224
-      type: {class: Transform2DPrototype, ns: Quantum.Prototypes, asm: Quantum.Engine}
-      data:
-        Position:
-          X:
-            RawValue: 0
-          Y:
-            RawValue: 0
-        Rotation:
-          RawValue: 0
     - rid: 4294669171582566400
       type: {class: Transform2DPrototype, ns: Quantum.Prototypes, asm: Quantum.Engine}
       data:

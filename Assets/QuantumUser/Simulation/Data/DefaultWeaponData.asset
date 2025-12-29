@@ -22,7 +22,7 @@ MonoBehaviour:
     X:
       RawValue: 0
     Y:
-      RawValue: 0
+      RawValue: 131072
     Z:
       RawValue: 0
-  bulletData: {fileID: 0}
+  bulletData: {fileID: 11400000, guid: e9cccd528986e0044a25bf51f75554a4, type: 2}

@@ -17,9 +17,9 @@ MonoBehaviour:
     Guid:
       Value: 311026363151896325
   Duration:
-    RawValue: 0
+    RawValue: 196608
   Bullet: {fileID: 3097001405596171208, guid: ce3b2edbd7a81ff479c39f32d35b5241, type: 3}
   Damage:
     RawValue: 1310720
   Speed:
-    RawValue: 655360
+    RawValue: 2621440
