@@ -19,7 +19,7 @@ namespace Quantum
             {
                 var weaponData = frame.FindAsset(filter.Weapon->WeaponData);
                 filter.Weapon->CooldownTime = weaponData.Cooldown;
-                Log.Info("Fire");
+                frame.Signals.CreateBullet(filter.Entity, weaponData);
             }
 
         }
