@@ -1,14 +1,21 @@
 using Quantum;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BillboardCamera : QuantumViewComponent<CameraViewContext>
 {
- 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] private Vector3 worldOffset = new Vector3(0, 0.5f, 0); // Y축으로 0.5 올림
+
+    void LateUpdate()
     {
-        transform.LookAt(ViewContext.virtualCamera.transform);
+        if (ViewContext?.virtualCamera == null) return;
+
+        // 부모 위치 + 월드 오프셋
+        if (transform.parent != null)
+        {
+            transform.position = transform.parent.position + worldOffset;
+        }
+
+        // 회전은 고정
+        transform.rotation = Quaternion.Euler(-45f, -180f, 0f);
     }
 }
