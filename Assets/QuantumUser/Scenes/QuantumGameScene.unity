@@ -3023,7 +3023,7 @@ MonoBehaviour:
   - PlayerAvatar:
       Id:
         Value: 1285913888949651750
-    PlayerNickname: 
+    PlayerNickname: Anack
   MaxPlayerCount: 0
   SimulationSpeedMultiplier: 1
   DisplaySaveAndReloadButton: 0

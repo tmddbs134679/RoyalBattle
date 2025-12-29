@@ -11,7 +11,10 @@ namespace Quantum
             if (damageable->Health <= 0)
             {
                 f.Destroy(victim);
+                return;
             }
+
+            f.Events.DamageableHit(victim, MaxHealth, damageable->Health);
         }
     }
 }
