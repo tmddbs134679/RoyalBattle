@@ -1,6 +1,7 @@
 namespace Quantum
 {
     using Photon.Deterministic;
+    using System;
     using UnityEngine.Scripting;
 
     [Preserve]
@@ -9,7 +10,49 @@ namespace Quantum
        
         public override void Update(Frame frame, ref Filter filter)
         {
-            filter.Transform->Position += filter.Bullet->Direction * filter.Bullet->Speed * frame.DeltaTime;
+            var nextPosition = filter.Bullet->Direction * filter.Bullet->Speed * frame.DeltaTime;
+
+            if(CheckForCollisions(frame,filter,nextPosition, out var entityHit))
+            {
+                frame.Destroy(filter.Entity);
+                return;
+            }
+
+            CheckBulletForTimeExpriation(frame,filter); 
+
+            filter.Transform->Position += nextPosition;
+          
+        }
+
+        private void CheckBulletForTimeExpriation(Frame frame, Filter filter)
+        {
+            filter.Bullet->Time -= frame.DeltaTime;
+            if(filter.Bullet->Time <= 0)
+            {
+                frame.Destroy(filter.Entity);
+            }
+        }
+
+        private bool CheckForCollisions(Frame frame, Filter filter,FPVector2 nextPosition, out EntityRef entityHit)
+        {
+            entityHit = EntityRef.None;
+
+            var owner = filter.Bullet->Owner;
+            var bulletTransform = frame.Get<Transform2D>(filter.Entity);
+            var collisions = frame.Physics2D.LinecastAll(bulletTransform.Position, bulletTransform.Position + nextPosition, int.MaxValue, 
+                                                            QueryOptions.HitAll & ~QueryOptions.HitTriggers);
+
+            for(var i = 0; i<collisions.Count; i++)
+            {
+                var collision = collisions[i];
+                if (collision.Entity == filter.Entity || collision.Entity == owner)
+                    continue;
+
+                entityHit = collision.Entity;
+                return true;
+            }
+
+            return false;
         }
 
         public struct Filter
